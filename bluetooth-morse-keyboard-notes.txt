@@ -1,0 +1,151 @@
+
+For configuration, device should emulate an USB mass storage device and allow copy/paste/etc of a config file. 
+http://forum.pjrc.com/threads/24922-Teensy-3-1-can-t-use-as-quot-Disk%28Internal%29-Keyboard-quot
+Feature will not be ready for 3.1 until some time in 2015...
+
+Next hardware revision, should include a socket for a WT12 breakout board in addition to the teensy. It should have a prototyping area and a footprint for a connector or two (DB9?, .1" header, 3.5mm TRRS/TRS, >>>RJ45<<<), this will allow others to customize the board to support other uses, like amateur radio, or alternate/additional input/output hardware.
+
+The WT12 supports Raw HID reports, which pretty much match the same data we send to emulate the full keyboard, teensy is "keyboard.setkey_()" and "keyboard.set_modifier()". 
+
+There is a problem in that users don't always want to have to enter two codes to access common characters like '?' which requires SHIFT + '/'.
+The easiest method from a programming standpoint would be to have it directly emulate keyboard behavior but this isn't optimum from the user's perspective due to multiple codes for common characters. One idea might be to have several look up tables and after each code is entered it looks up in each sequentially. This way it can operate with full keyboard functionality and convenience.
+The tables would be
+	table for morse to normal keys
+	table for morse to modifier keys
+	table for morse to characters which require modifiers, i.e. short cut codes so people don't have to key in modifiers for common characters
+	table for morse to menus, feature adjustments, macros and mode toggling
+		code look up doesn't return character but an value to be used in a switch case or if-then-elseif sequence
+This however may make configuration more complicated, which may require the development of a configuration builder tool, possibly gui, which generates the text config file.
+I also suggest that some codes like for sorta special keys use procedural codes like, AR in morse code, .-.-., which normally means end of message. 
+SOS should be a special emergency command, maybe one that is able to type all of the key commands to send an emergency request email. Defaults could be made for common systems, mac, win, lin perhaps. This is essentially a macro...
+Configuration is essentially mapping codes to functions. List of possible codes, list of possible functions (see list of tables above).
+
+Board should provide prototyping area and should have headers for additional connectors so others can develop very custom hardware to support people who require one-off designs.
+
+Alt-Tab, direct code for alt tab, and dit sends it again, dah returns to normal operation. very useful for switching between windows/programs
+
+Mouse movement: 
+	horizontal code
+		dits move left 10px dahs move right 10px
+	vertical code
+		dits move up 10px dahs move right 10px
+	Mouse activity times out after certain time. If user rapidly toggles between dits and dahs while in movement mode it will move the mouse in smaller increments in the direction of the first element. Example, in horizontal mode .-.-.-.- would move the mouse to the left in small increments.
+	Holding dits/dahs will cause the movement to accelerate so moving large distances isn't as slow.
+
+	left click code
+	left double click
+	left click toggle code (allows drag/drop/pan)
+	right click code
+	right double click
+	right click toggle code (allows drag/drop/pan)
+	middle click code
+	middle click toggle code (allows drag/drop/pan)
+	scroll code - functions as vertical code but simulates scroll wheel
+
+Questions
+	- What about different keyboard layouts?
+	- 	Cursory inspection leads me to believe that for english, most of the differences are in what characters are printed with modifier - keys.
+	- What about Alt-Gr key? https://en.wikipedia.org/wiki/AltGr_key
+	- What about batteries? Suspect using AA would be best, low cost, common, appropriate for low current.
+	- What about mouse functionality?
+- 
+	- How to update firmware on WT12? UART and SPI are the only options
+	- Can WT12 function as UART and HID at the same time? The Teensy 3.1 can function as many devices at once. If it can then we can have a UART to change config, etc over the bluetooth link.
+	- When using modifier keys, the morse code input only allows one key at a time, so multiple modifier key sequences would seem to mean that modifiers will need to be sent twice to toggle? No, actually modifiers should be set to off after a key which isn't a modifier is pressed. So ctrl+alt+del will send it's sequence after del is keyed in and ctrl+alt will be off after the sequence is sent.
+	- How can we indicate when caps lock, insert, num lock, etc are enabled? 
+
+
+
+Morse part should have all the basic functions of a regular cw keyer:
+	- Adjustable speed from 1 WPM to 150 WPM in tenth of a WPM increments
+	- ? Character timeout, might be useful for disabled, time before we consider input complete which is normally a function of speed and weighting but some users may not have that much timing control, etc.
+	- Switch dot and dash buttons; Default: left=dot, right=dash; TRS, T=dot R=dash S=common;
+	- Adjustable side tone 100Hz to 10kHz, default of 600 Hz
+	- CW weight, adjust element/space timing ratio (weight) for the keyer, default of 1.25
+	- Pre-programed sequences, i.e. memory slots
+	- Enable/disable side tone
+	- Adjust side tone volume
+	- Iambic modes A&B aren't likely useful for people using sip-puff switches since they can only close one set of contacts at a time.
+	- Enable/disable printing of menus/feedback
+	- Enable/disable audio feedback
+	- Enable/disable LED feedback
+
+
+
+There may be a limit to the bandwidth, i.e. keyboard key press speed. 62.5 keystrokes per second is the lowest speed that seems possible. Which is more than adequate, since we'll assume the maximum speed for sending will be 150 WPM or 750 characters per minute or 12.5 characters per second.
+
+
+
+
+
+Audio amp circuit LM386, note can't use USB power direct, too noisy
+LED to blink morse code, visual side tone, needs brightness adjust
+An open collector driver for other types of indicators like buzzers, or to key a radio, etc.
+
+
+Teensy USB keyboard usage: https://www.pjrc.com/teensy/td_keyboard.html
+
+Jeff Rowberg's iWRAP library: https://github.com/jrowberg/iwrap
+
+Normal keys: See "Codes table.xlsx"
+http://www.cbtbc.org/tools/morsecode/computermorse.php
+
+
+
+Ham morse keyers:
+http://www.hamgadgets.com/PICOKEYER-PLUS
+
+Full key codes can be found from document USB HID Usage Tables:
+http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
+
+Modifier key codes can be found from document HID1_11.pdf (Page 56)
+http://www.usb.org/developers/hidpage/HID1_11.pdf
+
+
+
+
+
+
+
+Documentation
+
+Background
+	I started this several years ago as a way to learn Morse code by having a device that I can use to send code in a day to day sort of way. Initially I had a lot of trouble building a USB version and so built this Bluetooth version, other things came up in life and I stopped working on it until a couple months ago when I got an email from the Commonwealth Braille & Talking Book Cooperative (CBTBC) asking about me building one or two for them to start working with and that re-ignited the project. For them the primary users are disabled and have very limited muscle control along with possibly of a number of other things that make interacting with common computer systems very difficult if not impossible. 
+
+	There are commercial systems out there but they're quite expensive >$400 which is a shame since the online world is one where physical capabilities don't really matter and that makes it one of the few possible places and ways to interact with other people on a level playing field. This device has been designed to be low cost, extensible and open source to allow and promote modification for those who need further customization or are interested in other sorts of ways to interact with computers.
+
+Current Version
+	The current build, and the first interface type I'm going after is USB because it's a little easier and will provide the foundation for Bluetooth. It's based around the Teensy 3.1 microprocessor and a Bluegiga WT12 Bluetooth module. The Teensy is very similar in use to an Arduino (very popular these days) but has way more bang for the buck (like integrated USB HID support, meaning it can be a keyboard and mouse really really easily). With the code I've written so far it functions as a very basic keyboard (doesn't support modifier keys like shift, ctrl, alt, etc, doesn't do iambic properly although it's not a requirement since most disabled use sip-puff switches) and changing settings requires one to modify source code, recompile and reflash (easier than it sounds), but these drawbacks will be eliminated as the project moves forward.
+
+	The Hardware
+		Description of hardware
+		Github
+			Parts list
+			Schematic
+			Board layout
+
+	The Software
+		Description of software
+		Github
+	t		Source code
+
+
+How to load code
+	Download Arduino ide 1.06
+	Download teensyduino
+	Open sketch
+	Select board & kbd mode etc
+
+	How to update firmware on WT12
+
+How to contribute
+	Software Dev
+	Testing & Feedback
+
+To do list
+
+Links & resources
+	Teensy
+	WT12
+	Morse Code
+	Keyboards & HID info

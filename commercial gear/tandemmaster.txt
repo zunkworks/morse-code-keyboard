@@ -1,0 +1,96 @@
+In order to make use of the MacOS built in Switch Control and VoiceOver functions which will greatly improve user experience with the TandemMaster we need to be able to reach all of the following KeyCode. How could this be done in the mconfig.ini file?
+
+Notice that the keypad numeric keys have a different code and keycode than do the conventional keyboard numbers. For example:
+
+eventType:keyDown         code:0x12       name:1               flags:                       misc:characters:1           KeyCode::KEY_1
+eventType:keyUp           code:0x12       name:1               flags:                       misc:characters:1           KeyCode::KEY_1
+eventType:keyDown         code:0x53       name:1               flags:NumPad                 misc:characters:1           KeyCode::KEYPAD_1
+eventType:keyUp           code:0x53       name:1               flags:NumPad                 misc:characters:1           KeyCode::KEYPAD_1
+
+Is it possible to refer to key by their code representations ei: 0x53 I have tried using the KeyCode names with no results.
+
+Thank you for your help.
+
+Greg Kearney
+
+
+
+The cursor(arrow) keys
+
+eventType:keyDown         code:0x7e       name:Up              flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_UP
+eventType:keyUp           code:0x7e       name:Up              flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_UP
+eventType:keyDown         code:0x7d       name:Down            flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_DOWN
+eventType:keyUp           code:0x7d       name:Down            flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_DOWN
+eventType:keyDown         code:0x7b       name:Left            flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_LEFT
+eventType:keyUp           code:0x7b       name:Left            flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_LEFT
+eventType:keyDown         code:0x7c       name:Right           flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_RIGHT
+eventType:keyUp           code:0x7c       name:Right           flags:NumPad Fn              misc:characters:            KeyCode::CURSOR_RIGHT
+
+The control keys
+
+eventType:keyMod          code:0x37       name:Command_L       flags:Cmd                    misc:characters:            KeyCode::COMMAND_L
+eventType:keyMod          code:0x37       name:Command_L       flags:                       misc:characters:            KeyCode::COMMAND_L
+eventType:keyMod          code:0x3a       name:Option_L        flags:Opt                    misc:characters:            KeyCode::OPTION_L
+eventType:keyMod          code:0x3a       name:Option_L        flags:                       misc:characters:            KeyCode::OPTION_L
+eventType:keyMod          code:0x3b       name:Control_L       flags:Ctrl                   misc:characters:            KeyCode::CONTROL_L
+eventType:keyMod          code:0x3b       name:Control_L       flags:                       misc:characters:            KeyCode::CONTROL_L
+eventType:keyMod          code:0x36       name:Command_R       flags:Cmd                    misc:characters:            KeyCode::COMMAND_R
+eventType:keyMod          code:0x36       name:Command_R       flags:                       misc:characters:            KeyCode::COMMAND_R
+eventType:keyMod          code:0x3d       name:Option_R        flags:Opt                    misc:characters:            KeyCode::OPTION_R
+eventType:keyMod          code:0x3d       name:Option_R        flags:                       misc:characters:            KeyCode::OPTION_R
+eventType:keyMod          code:0x3e       name:Control_R       flags:Ctrl                   misc:characters:            KeyCode::CONTROL_R
+eventType:keyMod          code:0x3e       name:Control_R       flags:                       misc:characters:            KeyCode::CONTROL_R
+eventType:keyMod          code:0x3f       name:Fn              flags:Fn                     misc:characters:            KeyCode::FN
+eventType:keyMod          code:0x3f       name:Fn              flags:                       misc:characters:            KeyCode::FN
+
+Navigation keys
+
+eventType:keyDown         code:0x75       name:Forward Delete  flags:Fn                     misc:characters:            KeyCode::FORWARD_DELETE
+eventType:keyUp           code:0x75       name:Forward Delete  flags:Fn                     misc:characters:            KeyCode::FORWARD_DELETE
+eventType:keyDown         code:0x73       name:Home            flags:Fn                     misc:characters:            KeyCode::HOME
+eventType:keyUp           code:0x73       name:Home            flags:Fn                     misc:characters:            KeyCode::HOME
+eventType:keyDown         code:0x77       name:End             flags:Fn                     misc:characters:            KeyCode::END
+eventType:keyUp           code:0x77       name:End             flags:Fn                     misc:characters:            KeyCode::END
+eventType:keyDown         code:0x74       name:Page Up         flags:Fn                     misc:characters:            KeyCode::PAGEUP
+eventType:keyUp           code:0x74       name:Page Up         flags:Fn                     misc:characters:            KeyCode::PAGEUP
+eventType:keyDown         code:0x79       name:Page Down       flags:Fn                     misc:characters:            KeyCode::PAGEDOWN
+eventType:keyUp           code:0x79       name:Page Down       flags:Fn                     misc:characters:            KeyCode::PAGEDOWN
+
+Keypad (numeric)
+
+eventType:keyDown         code:0x47       name:Clear/Num Lock  flags:Fn                     misc:characters:            KeyCode::KEYPAD_CLEAR
+eventType:keyUp           code:0x47       name:Clear/Num Lock  flags:Fn                     misc:characters:            KeyCode::KEYPAD_CLEAR
+eventType:keyDown         code:0x51       name:=               flags:NumPad                 misc:characters:=           KeyCode::KEYPAD_EQUAL
+eventType:keyUp           code:0x51       name:=               flags:NumPad                 misc:characters:=           KeyCode::KEYPAD_EQUAL
+eventType:keyDown         code:0x4b       name:/               flags:NumPad                 misc:characters:/           KeyCode::KEYPAD_SLASH
+eventType:keyUp           code:0x4b       name:/               flags:NumPad                 misc:characters:/           KeyCode::KEYPAD_SLASH
+eventType:keyDown         code:0x43       name:*               flags:NumPad                 misc:characters:*           KeyCode::KEYPAD_MULTIPLY
+eventType:keyUp           code:0x43       name:*               flags:NumPad                 misc:characters:*           KeyCode::KEYPAD_MULTIPLY
+eventType:keyDown         code:0x59       name:7               flags:NumPad                 misc:characters:7           KeyCode::KEYPAD_7
+eventType:keyUp           code:0x59       name:7               flags:NumPad                 misc:characters:7           KeyCode::KEYPAD_7
+eventType:keyDown         code:0x5b       name:8               flags:NumPad                 misc:characters:8           KeyCode::KEYPAD_8
+eventType:keyUp           code:0x5b       name:8               flags:NumPad                 misc:characters:8           KeyCode::KEYPAD_8
+eventType:keyDown         code:0x5c       name:9               flags:NumPad                 misc:characters:9           KeyCode::KEYPAD_9
+eventType:keyUp           code:0x5c       name:9               flags:NumPad                 misc:characters:9           KeyCode::KEYPAD_9
+eventType:keyDown         code:0x4e       name:-               flags:NumPad                 misc:characters:-           KeyCode::KEYPAD_MINUS
+eventType:keyUp           code:0x4e       name:-               flags:NumPad                 misc:characters:-           KeyCode::KEYPAD_MINUS
+eventType:keyDown         code:0x56       name:4               flags:NumPad                 misc:characters:4           KeyCode::KEYPAD_4
+eventType:keyUp           code:0x56       name:4               flags:NumPad                 misc:characters:4           KeyCode::KEYPAD_4
+eventType:keyDown         code:0x57       name:5               flags:NumPad                 misc:characters:5           KeyCode::KEYPAD_5
+eventType:keyUp           code:0x57       name:5               flags:NumPad                 misc:characters:5           KeyCode::KEYPAD_5
+eventType:keyDown         code:0x58       name:6               flags:NumPad                 misc:characters:6           KeyCode::KEYPAD_6
+eventType:keyUp           code:0x58       name:6               flags:NumPad                 misc:characters:6           KeyCode::KEYPAD_6
+eventType:keyDown         code:0x45       name:+               flags:NumPad                 misc:characters:+           KeyCode::KEYPAD_PLUS
+eventType:keyUp           code:0x45       name:+               flags:NumPad                 misc:characters:+           KeyCode::KEYPAD_PLUS
+eventType:keyDown         code:0x53       name:1               flags:NumPad                 misc:characters:1           KeyCode::KEYPAD_1
+eventType:keyUp           code:0x53       name:1               flags:NumPad                 misc:characters:1           KeyCode::KEYPAD_1
+eventType:keyDown         code:0x54       name:2               flags:NumPad                 misc:characters:2           KeyCode::KEYPAD_2
+eventType:keyUp           code:0x54       name:2               flags:NumPad                 misc:characters:2           KeyCode::KEYPAD_2
+eventType:keyDown         code:0x55       name:3               flags:NumPad                 misc:characters:3           KeyCode::KEYPAD_3
+eventType:keyUp           code:0x55       name:3               flags:NumPad                 misc:characters:3           KeyCode::KEYPAD_3
+eventType:keyDown         code:0x4c       name:Enter           flags:                       misc:characters:            KeyCode::ENTER
+eventType:keyUp           code:0x4c       name:Enter           flags:                       misc:characters:            KeyCode::ENTER
+eventType:keyDown         code:0x52       name:0               flags:NumPad                 misc:characters:0           KeyCode::KEYPAD_0
+eventType:keyUp           code:0x52       name:0               flags:NumPad                 misc:characters:0           KeyCode::KEYPAD_0
+eventType:keyDown         code:0x41       name:.               flags:NumPad                 misc:characters:.           KeyCode::KEYPAD_DOT
+eventType:keyUp           code:0x41       name:.               flags:NumPad                 misc:characters:.           KeyCode::KEYPAD_DOT

@@ -1,0 +1,286 @@
+#This is a comment line
+#M2U Configuration file
+#Revision 1.05  April 16, 2009
+# Version 1 from MacOS X 10.10 (Yosemite) by Greg Kearney info@cbtbc.org August 2014
+
+Rate dit 80 		# mS
+Rate dah 240 		# dit Rate * 3 = 240mS
+
+Tone dit 880  80 	# Hz, mS
+Tone dah 500 140 	# Hz, mS
+Tone err 176 350 	# Hz, mS error tone
+
+Vol 4 				# Default volume, range is 0 to 7.
+Gain 2 				# Number of Steps to change volume for each increment or decrement, range is 1 to 8.
+
+# Stores user statistics in Data0.log - Data4.log files stored in the M2U memory when the user has # typed 500 characters and the M2U is idle for 30 seconds. Range ON/OFF
+
+Autolog on
+
+#The "PACING" commands set the repeat intervals in milliseconds for each of the iterative functions: Macro playback, Keyboard repeat, mouse move slow rate, and mouse move fast rate.
+
+pacing MACRO 10 	# Macro playback speed in mS (Macros to Host)  
+pacing KEYBD 35 			# Keyboard repeat rate in mS
+pacing MOUSE 48 	# Slow mouse repeat rate in mS
+pacing FMOUSE 12 	# Fast mouse repeat rate in mS
+
+#The "TUNING" command sets the amount (in percent) by which the "”GoFaster" and "”GoSlower" commands will # change the keying speed.
+
+TUNING 10
+
+#The "MAXBITS" command sets the maximum number of DITs and DHAs that can be used to assemble a character. If you attempt to assemble a character with more than this number of bits, the input engine will stop making dit or dah tones and discard the current pattern in progress. This is a handy way to abort a character entry if you have a keying error, and it avoids having to undo or erase a bad character.
+
+MAXBITS 8 # maximum size of a Morse char, range is 5 to 8
+
+Menu 1 # Keyboard
+#Entry Event "Entering Menu 1[Enter] " #This command is executed every time you enter this menu. It can be any command, macro etc. For instance, un-commenting this would print: "Entering Menu 1" and the Enter key, right where your cursor is every # time you enter Menu 1. 
+
+#Exit Event "Exiting Menu 1 [Enter]" # This command is executed every # time you exit this menu 
+
+Predict On 	#Enables or disables word predict for this menu. Range ON/OFF
+
+#Note: You may replace a code where it appears in the table below or at the beginning of the table - which is scanned first. It is ”Good practice to comment out code you are changing and place the replacement code below that commented code so you may see what is changed. # Below are examples of code which replace the word prediction "DN" command with the "/" character and the "ACCEPT" command with the "[SP]" (space) character.
+
+code "..--"		event "[ACCEPT]"	#Accept word prediction (Replaces[SP])
+code "-..-."	event "[DN]"	#Reject word prediction, "Don't need" (Replaces "/")
+
+#Note: In the examples above, the [SP] character is still available as the effect # of ACCEPT is to enter a space. The "/" character is replaced with DN and is no ?longer available.
+
+#Below are STANDARD Morse Codes which are commented out unless otherwise shown.
+#code ".-"		event "a"
+#code "-..."	event "b"
+#code "-.-."	event "c"
+#code "-.."		event "d"
+#code "."		event "e"
+#code "..-."	event "f"
+#code "--."		event "g"
+#code "...."	event "h"
+#code ".."		event "i"
+#code ".---"	event "j"
+#code "-.-"		event "k"
+#code ".-.."	event "l"
+#code "--"		event "m"
+#code "-."		event "n"
+#code "---"		event "o"
+#code ".--."	event "p"
+#code "--.-"	event "q"
+#code ".-."		event "r"
+#code "..."		event "s"
+#code "-"		event "t"
+#code "..-"		event "u"
+#code "...-"	event "v"
+#code ".--"		event "w"
+#code "-..-"	event "x"
+#code "-.--"	event "y"
+#code "--.."	event "z"
+#code ".----"	event "1"
+#code "..---"	event "2"
+#code "...--"	event "3"
+#code "....-"	event "4"
+#code "....."	event "5"
+#code "-...." 	event "6"
+#code "--..." 	event "7"
+#code "---.." 	event "8"
+#code "----." 	event "9"
+#code "-----" 	event "0"
+#code "...-" 	event "[sh+^+gl]"
+
+#code "------" 	event "[CADEL]"
+code "....-." 	event "[SH]"
+code "-.-..." 	event "[^]"
+code "..-..-" 	event "[ALT]"
+code "-..--" 	event "[CAPLOCK]" 
+code "...-.-" 	event "[SCRLOCK]" 
+code "-...-." 	event "[NUMLOCK]" 
+code ".-.-.-."	event "[sentence]"	#(AAA) This capitalizes places 2 spaces and capitalizes the next word.
+code "..-..." 	event "[BREAK]"
+code "...-.." 	event "[PAUSE]"
+code "....--"	event "[KEYREPEAT]"
+#code "..--"	event "[SP]"
+code "----"		event "[BS]"
+code ".-.--"	event "[QUOTE]"
+code ".--.."	event "[BOX]"
+code ".--.-"  	event "]"
+
+# PC-104 specific keys
+code "--.--"	event "[GU]"
+code "--..-"	event "[GD]"
+code "----.-"	event "[GL]"
+code "--..-."	event "[GR]"
+code ".--.--"	event "[GHOME]"
+code ".--..."	event "[GEND]"
+code ".--.-."	event "[GPGU]"
+code ".--..-"	event "[GPGD]"
+code ".-.-"		event "[ENTER]"
+code "---."		event "[ESC]"
+code "-..-.."	event "[GDEL]"
+code "--.--."	event "[GINS]"
+code "-.-..-"	event "[TAB]"
+code "-.--.-"	event "[BTAB]"
+
+# Standard Function Keys
+code "--.----" 	event "[F1]"
+code "--..---" 	event "[F2]"
+code "--...--" 	event "[F3]"
+code "--....-" 	event "[F4]"
+code "--....." 	event "[F5]"
+code "---...." 	event "[F6]"
+code "----..." 	event "[F7]"
+code "-----.." 	event "[F8]"
+code "------." 	event "[F9]"
+code ".-----"  	event "[F10]"
+code "..----"  	event "[F11]"
+code "...---"  	event "[F12]"
+
+# Punctuation
+code "-....-"  	event "-"
+code ".-..."	event "+"
+code "...-."	event "*"
+code "-.-.-"	event "\"
+#code "-..-."	event "/"	#Reassigned to [DN]
+code "---.-"	event "%"
+code "-...-"	event "="
+code "..--."	event "("
+code "..-.-"	event ")"
+code "-.-.--"  	event "{"
+code "-..---"  	event "}"
+code "-.--."   	event "<"
+code "-.---"   	event ">"
+code "......"  	event "^"
+code ".---.."  	event "~"
+code ".----."  	event "'"
+code "-..-.-"  	event "`"
+code "--.-."	event "#"
+code ".-.-."	event "$"
+code ".---."	event "@"
+code "-.-.."	event "&"
+code "--.-.-"  	event "|"
+code "------"  	event "_"
+code ".-..-"   	event "!"
+code "..--.."  	event "?"
+code "-.-.-."  	event ";"
+code ".-.-.-"  	event "."
+code "---..."  	event ":"
+code "--..--"  	event ","
+code "....----" event "[^-c]"
+code "----...." event "[^-v]"
+
+
+Menu 2 # Mouse
+#Entry Event "Entering Menu 2 "
+#Exit  Event "Exiting Menu 2 "
+
+Predict Off
+#code "."	event "[mouserepeat slow]"
+#code "-"	event "[mouserepeat fast]"
+code "-"	event "[mouserepeat slow]"
+code "."	event "[mouserepeat fast]"
+
+code ".." 	event "[mouse moveleft 2]"
+code "..." 	event "[mouse moveright 2]"
+code "--" 	event "[mouse moveup 2]"
+code "---" 	event "[mouse movedown 2]"
+
+code "-."	event "[mouse hold btnleft]"
+code ".-"	event "[mouse release btnleft]"
+code "-.."	event "[mouse tap btnleft]"
+code "--.."	event "[mouse doubletap btnleft]"
+
+code "--."	event "[mouse hold btnright]
+code ".-."	event "[mouse release btnright]"
+code ".--"	event "[mouse tap btnright]
+code ".--."	event "[mouse doubletap btnright]
+
+code ".-.-" event "[Enter]"
+code "---." event "[ESC]"
+
+Menu 3 #Example: Numeric Shortcuts
+# Entry Event "Entering Menu 3 [ENTER]=[Keyrepeat]" 
+# Exit Event "Exiting Menu 3 "
+
+Predict Off
+code "."	event "1"
+code ".."	event "2"
+code "..."	event "3"
+code ".-"	event "4"
+code "..-"	event "5"
+code "-."	event "6"
+code "-.."	event "7"
+code "--."	event "8"
+code "---"	event "9"
+code "-"	event "0"
+code "--"	event "[BS]"
+code ".-.-"	event "[Enter]"
+code "--.--" event "[GU]"
+code "--..-"	event "[GD]"
+code "----.-"	event "[GL]"
+code "--..-."	event "[GR]"
+code ".--.--"	event "[GHOME]"
+code ".--..."	event "[GEND]"
+code ".--.-."	event "[GPGU]"
+code ".--..-"	event "[GPGD]"
+code "-..-.."	event "[GDEL]"
+code "--.--."	event "[GINS]"
+code ".-----"	event "[TAB]"
+code "..----"	event "[BTAB]"
+code "...---"	event "[ALT-TAB]"
+code "---..."	event "[^-TAB]"
+code "----.."	event "[^-C]"
+code "-----."	event "[^-Y]"
+code ".-.-.-"	event "."
+code "--..--"	event ","
+code "-..-."	event "/"
+code ".-..."	event "+"
+code "-....-"	event "-"
+code "-...-"	event "="
+code "--.----"	event "[F1]"
+
+Menu 4 #Example: Keyboard Arrows 
+# Entry Event "Entering Menu 4 [ENTER]" 
+# Exit Event "Exiting Menu 4 "
+
+#code "..."	event "[left]"
+#code "--"	event "[right]"
+#code ".."	event "[down]"
+#code "-"	event "[up]"
+code ".-"	event "[Enter]"
+code "."	event "[Keyrepeat]"
+
+#VoiceOver Keyboard commands
+
+code "..."	event "[CURSOR_LEFT]"
+code "--"	event "[CURSOR_RIGHT]"
+code ".."	event "[CURSOR_DOWN]"
+code "-"	event "[CURSOR_UP]"
+#code ".-"	event "[Enter]"
+#code "."	event "[Keyrepeat]"
+
+
+#code "." event "[KEYPAD_6]"
+
+MACROCHAR "*" #You may reassign the macro entry character here  default is the "*" character.
+Macro [bt] "BITE ME! "
+Macro [gb] "Hello, I am ”Going to Bellevue Transit center. " 
+Macro [gh] "Hi, I need to be let off by evergreen hospital. " 
+Macro [gs] "Hi, I would like to be let off by Kingsgate Safeway " 
+Macro [hs] "Hello, I am here to see __"
+Macro [im] "Leave me alone; I have PMS "
+Macro [io] "I love you Michael "
+Macro [ma] "12345 678st Ave NE Anywhere, WA. 98000"
+Macro [mb] "June 5, 2009"
+Macro [me] "My.Name@yourmail.com"
+Macro [mf] "425-555-1234"
+Macro [mn] "My name is Tania Finlayson"
+Macro [ms] "My SSI # is xxx-yy-zzzz "
+Macro [va] "My visa is in my purse in the front zipper pocket. " Macro [wd] "Whatcha doing? "
+
+# This vocabulary table may hold up to 1020 entries. Vocab "Firstname"
+Vocab "Lastname"
+Vocab "Bellevue"
+Vocab "Seattle"
+Vocab "Kirkland"
+Vocab "Washington"
+Vocab "Safeway"
+
+#END of MCONFIG.INI
+

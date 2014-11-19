@@ -1,0 +1,658 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" > 
+<head><script type="text/javascript">/* <![CDATA[ */_cf_loadingtexthtml="<img alt=' ' src='/CFIDE/scripts/ajax/resources/cf/images/loading.gif'/>";
+_cf_contextpath="";
+_cf_ajaxscriptsrc="/CFIDE/scripts/ajax";
+_cf_jsonprefix='//';
+_cf_websocket_port=8575;
+_cf_flash_policy_port=1243;
+_cf_clientid='5FBB0743295B7D3011A9832E003F409E';/* ]]> */</script><script type="text/javascript" src="/CFIDE/scripts/ajax/messages/cfmessage.js"></script>
+<script type="text/javascript" src="/CFIDE/scripts/ajax/package/cfajax.js"></script>
+
+<script type="text/javascript">/* <![CDATA[ */
+	ColdFusion.Ajax.importTag('CFAJAXPROXY');
+/* ]]> */</script>
+
+<script type="text/javascript">/* <![CDATA[ */
+	var _cf_menu=ColdFusion.AjaxProxy.init('/library_cf/cfc/all/menu.cfc','btJSBlueToothMenu');
+	_cf_menu.prototype.expandMenu=function(menuId,menuDisplay,userId,memberId,cgiScriptName,languageID) { return ColdFusion.AjaxProxy.invoke(this, "expandMenu","61D689BB91908891B4AD9D44989C4C9BB794", {menuId:menuId,menuDisplay:menuDisplay,userId:userId,memberId:memberId,cgiScriptName:cgiScriptName,languageID:languageID});};
+	_cf_menu.prototype.publicMenu=function(active_node,url_string,loggedIn,userId,memberId,languageID) { return ColdFusion.AjaxProxy.invoke(this, "publicMenu","61D689BB91908891B4AD9D44989C4C9BB794", {active_node:active_node,url_string:url_string,loggedIn:loggedIn,userId:userId,memberId:memberId,languageID:languageID});};
+	_cf_menu.prototype.trackMenuClick=function(menuId,userId,is_expanded) { return ColdFusion.AjaxProxy.invoke(this, "trackMenuClick","61D689BB91908891B4AD9D44989C4C9BB794", {menuId:menuId,userId:userId,is_expanded:is_expanded});};
+	_cf_menu.prototype.expandSelectedMenu=function(id,parentIDList,selectedID,userId,memberId,cgiScriptName,languageID) { return ColdFusion.AjaxProxy.invoke(this, "expandSelectedMenu","61D689BB91908891B4AD9D44989C4C9BB794", {id:id,parentIDList:parentIDList,selectedID:selectedID,userId:userId,memberId:memberId,cgiScriptName:cgiScriptName,languageID:languageID});};
+/* ]]> */</script>
+
+	<!-- Start of content coming from main header file -->
+	<meta name="robots" content="NOODP, NOYDIR">
+	<meta name="google-site-verification" content="Ld7rn1xnRpQY9wUg9hBjhhXS733m_y3JNqRHQ18N4Hk" />
+	<title>The Official Bluetooth SIG Member Website</title>
+	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
+	
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.min.js" type="text/javascript"></script>
+	
+	<script>window.jQuery || document.write('<script src="/library/js/jquery-1.8.1.min.js"><\/script>')</script>
+	
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
+	
+	<script>window.jQuery.ui || document.write('<script src="/library/js/jquery-ui-1.9.0.min.js"><\/script>')</script>
+	<link type="text/css" rel="stylesheet" href="/library/css/bt_style.css" />    
+	<link type="text/css" rel="stylesheet" href="/library/css/language.css" />
+	<meta name="description" content="Bluetooth.org is dedicated to Bluetooth SIG members and serves as the definitive source of information around SIG programs, initiatives, and <em>Bluetooth<em> wireless technology development. If you are associated with a member company or interested in membership within the Bluetooth SIG, this website is tailored to you.">
+	<script type='text/javascript' src='/library/js/cookie.js'></script>
+	<script type='text/javascript' src='/library/js/scripts.js'></script>
+	
+	<script src="/library/js/menu_cf.js" type="text/javascript"></script>
+	
+
+	<script language="JavaScript" type="text/javascript">
+		function tpgSubmit(selectedtype, pageaction, minordetail)
+		{
+			var currentPage = "qli_viewqdl.cfm";
+			
+			switch (currentPage)
+			{
+				// If we're getting called from menu while on the view_project page, do the submit like before.
+				case "view_project.cfm":
+					document.form99.goto_step.value = selectedtype;
+					document.form99.page_action.value = pageaction;
+					document.form99.minor_detail.value = minordetail;
+					document.form99.submit();
+					break;
+				// If we're getting called from menu while on the my_projects page, just ask them to choose a project.
+				case "my_projects.cfm":
+					alert("That page is not available without viewing a project Test Plan. Please select a project Test Plan link.");
+					break;
+				// If we're getting called from menu while on the project_details page, go to declaration.
+				case "project_details.cfm":
+					document.form99.goto_step.value = selectedtype;
+					document.form99.page_action.value = pageaction;
+					document.form99.minor_detail.value = minordetail;
+					document.form99.submit();
+					break;
+				default:
+					// From anywhere else, alert them, then move to my_projects.
+					if (confirm("That page is not available without viewing a project Test Plan. Would you like to view the My Projects page?"))
+						window.location = "/tpg/my_projects.cfm";
+					break;
+			}	
+		}
+	</script>
+
+	<!-- Google Analytics Script  --->
+        <script type="text/javascript">
+
+  			var _gaq = _gaq || [];
+  			_gaq.push(['_setAccount', 'UA-5228093-1']);
+			_gaq.push(['_setDomainName', 'bluetooth.org']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	<!-- End of Google Analytics Script -->
+	
+	<!-- CoroMotives Scripts -->
+        <script type="text/javascript">
+		  var path = (("https:" == document.location.protocol) ? "https://databroker.coremotives.com/databroker.js?version=2" : "http://cdn.coremotivesmarketing.com/databroker.js");
+		  document.write(unescape("%3Cscript src='" + path + "' type='text/javascript'%3E%3C/script%3E"));
+		  </script>
+		  <script type="text/javascript">
+		  try {
+			var coreMotives = new DataBroker();
+			coreMotives.customerId = "322abd2b-8a01-e211-9707-00155d323097";
+			coreMotives.instanceId = 1184;
+			coreMotives.trackPageView();
+		  } catch (e) { }
+		</script>
+		<!-- End of CoroMotives Scripts -->
+
+	<!-- End of content coming from main header file -->
+
+    <link href="/tpg/css/viewQDL.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="js/viewQDL.js"></script>
+</head>
+<body>
+
+
+
+<!--qli_alldesigns-->
+<!-- BEGIN header-->
+<div id="header">
+<table border="0"  width="978" cellspacing="0" cellpadding="0" summary="Holds top bar">
+	<tr>
+		<td colspan="4" align="right" valign="bottom" class="gryHeaderFooter">
+			<a name="PageTop"></a>
+			<A href="http://www.bluetooth.com/">Bluetooth.com</A>
+		</td>
+	</tr>
+	<tr>
+		<td class="whtBackground"><img src="/library/images/spacer.gif" height="13" width="5" alt="" /></td>
+		<td class="whtBackground"><img src="/library/images/spacer.gif" height="1" width="200" alt="" /></td>
+		<td class="ltgryBackground"><img src="/library/images/spacer.gif" height="1" width="13" alt="" /></td>
+		<td class="ltgryBackground"><img src="/library/images/spacer.gif" height="1" width="760" alt="" /></td>
+	</tr>
+</table>
+</div>
+<!-- END header-->
+
+<table id="wrapper" cellpadding="0" cellspacing="0"> 
+	<tr>
+		<td>
+
+		<a href="/"><img src="/library/images/logos/btsiglogo.gif" /></a><br />
+
+		
+		
+		
+		<div id="loginview">
+		
+			<strong> You are not logged in</strong><br />
+			<a href="/"> Home</a> | 
+			<a id="_ctl0__ctl6_scbLoginView_lnkRegister" href="/login/register/"> Register</a> | 
+			<a id="_ctl0__ctl6_scbLoginView_lnkLogin" href="/login/?ReturnUrl=/tpg/QLI_viewQDL.cfm?qid=17400"> Login</a>
+		
+		</div>
+		
+		<!-- #include virtual="/library/includes/globalnav_public.inc" -->
+		
+		<div id="sidebar" style="display:block">
+			<ul id="nav_public">
+				
+							<li id="btMenuItem184"><a href="#" onClick="expandMe('184','1',this,'1,9,376,465,490,184,603,605','0','0','/tpg/QLI_viewQDL.cfm','1');return false;" id="abtMenuItem184" class="lvl0_close">Events</a></li>
+						
+							<li id="btMenuItem603">
+								
+									<a id="abtMenuItem603" class="lvl0_cur_open" href="#" onClick="expandMe('603','1',this,'1,9,376,465,490,184,603,605','0','0','/tpg/QLI_viewQDL.cfm','1');return false;">
+										Resources
+									</a>
+									<ul id="btMenuItemSub603">
+				
+					<li id="btMenuItem319">
+						
+								<a href="/ticketing/faq.cfm" node="FAQ">FAQ</a>
+							
+					</li>
+					
+					<li id="btMenuItem16">
+						
+								<a href="/tpg/listings.cfm" class="currentPage" node="qli_alldesigns">Qualified Listings</a>
+							
+					</li>
+					
+					<li id="btMenuItem604">
+						
+								<a href="/apps/qualification/bqtf.aspx">List of BQTFs</a>
+							
+					</li>
+					
+					<li id="btMenuItem13">
+						
+								<a href="/apps/directory/default.aspx" node="DirectoryApps">Member Directory</a>
+							
+					</li>
+					
+			</ul> 
+							</li>
+						
+							<li id="btMenuItem605"><a href="#" onClick="expandMe('605','1',this,'1,9,376,465,490,184,603,605','0','0','/tpg/QLI_viewQDL.cfm','1');return false;" id="abtMenuItem605" class="lvl0_close">Report Issues</a></li>
+						
+			</ul>
+		</div>
+		</td>
+		<td id="content">
+			<!-- #include virtual="/library/includes/LangAndSearch.inc" -->
+			<script>
+function searchTextFocus(searchBox)
+{
+	if (searchBox.value == "enter keywords here")
+	{
+		searchBox.value = "";
+	}
+}
+	
+function changeLanguage(newLangID)
+{
+	var expDate = new Date();
+	var dateString = '';
+	
+	expDate.setDate(expDate.getDate() + 1);
+	dateString = expDate.toGMTString();
+
+	document.cookie = 'BLUETOOTH=' + newLangID + '; expires=' + dateString + '; path=/';
+	location.reload(true);
+	return true;
+}
+    
+</script>
+
+
+
+<table width="760" border="0" cellspacing="0" cellpadding="0" summary="langauge and search">
+    <tr>
+    
+	    <td style="width:22px"><img src="/library/images/langauge_globe.gif" width="22px" height="19px" alt="" /></td>
+		<td style="width:358px" align="left" valign="middle">      
+                        <!--[if gte IE 7]>
+                        <div id="IEroot">
+                        <![endif]-->
+		                <ul id="langDrop">
+
+                            <li style="cursor:default">
+                                <span id="ctl00_ls_lblTitle">Select Language</span>&nbsp;<img alt="" src="/library/images/arrow_blu_dwn.gif" width="7" height="4" />
+                                <ul style="margin-top:-1px">
+									
+										<li>
+											<a id="ctl00_ls_repLanguageRepeater_ctl01_liLinkLanguage" href="#" onClick="javascript:changeLanguage(1)">English</a>
+										</li>
+									
+										<li>
+											<a id="ctl00_ls_repLanguageRepeater_ctl02_liLinkLanguage" href="#" onClick="javascript:changeLanguage(2)">Japanese</a>
+										</li>
+									
+										<li>
+											<a id="ctl00_ls_repLanguageRepeater_ctl03_liLinkLanguage" href="#" onClick="javascript:changeLanguage(3)">Korean</a>
+										</li>
+									
+										<li>
+											<a id="ctl00_ls_repLanguageRepeater_ctl04_liLinkLanguage" href="#" onClick="javascript:changeLanguage(4)">Simplified Chinese</a>
+										</li>
+									
+
+                                    </ul>
+
+                        </ul>
+                        <!--[if gte IE 7]>
+                        </div>
+                        <![endif]-->
+                    </td>
+      
+		  <td width="447" align="right" valign="bottom" class="whtBackground">
+			  <table id="searchBar__tblSearch" width="287" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+					  <td width="66" align="right" valign="middle" class="searchText"> Search site</td>
+					  <td valign="middle" class="gry">
+						  <input type="text" value=" Enter keywords here" id="searchBar__searchQueryTextBox" class="inputSearch" onKeyPress="return searchTextCheckEnter(event)" onfocus="searchTextFocus(this)" />
+					  </td>
+					  <td valign="middle" class="gry"><a class="searchButton" href="javascript:searchOrgSite()"> Search&nbsp;<img src="/library/images/arrow_blu_rgt.gif"/></a>
+            </td>
+				  </tr>
+			  </table>
+		</td>
+	  </tr>
+</table>
+<script type="text/javascript">
+startList = function(){
+    if(document.all&&document.getElementById){
+        navRoot = document.getElementById("langDrop");
+        for (i=0;i<navRoot.childNodes.length;i++){
+            node = navRoot.childNodes[i];
+            if (node.nodeName=="LI"){
+                node.onmouseover=function(){
+                    this.className+=" sfhover";
+                }
+                node.onmouseout=function(){
+                    this.className=this.className.replace(" sfhover","");
+                }
+            }
+        }
+    }
+}
+window.onload=startList;                        
+</script>
+
+<!-- bullman: For single line messages, keep message length short. For reference: Max "W"s=55, Max "i"s=220 -->
+<!--<div style="margin:0px 0px 2px 2px" class="messagemBoxValidation"><b>System Message:</b> Maintenance scheduled for 13-Jan-08, 14:00-15:00 PST.<br>All systems will experience intermittent outages during this time.</div>-->
+		
+		
+
+			<h1>Listing Details</h1>
+			
+			<div id="innercontent">
+
+<!-- ********************** BODY SECTION BELOW ********************** //-->
+
+		
+	<div id='sidebar_activenode'>qli_alldesigns</div>
+	 
+
+<br>
+<div id="viewHistory" style="height:500px;width:85%;display:none;position:absolute;"></div>
+ 
+<div id="mainDiv">
+		
+    <table class="dataTable" cellpadding="6" cellspacing="1" align="center" id="mainTable">			  					
+        			
+          <tr valign="top"> 
+             <td align="center" style="width: 200px;">
+			  	<a href="javascript:history.go(-1);"><< Go Back << </a> 
+			    <br><br>
+			 </td>
+			 <td align="center">  
+	  		   
+								
+					<a href="javascript:openWindow('showCorePICS.cfm?3A000A5A005C5043555E54','declaration2','scrollbars=yes,menubar=yes,resizable=yes,width=700,height=400')" style="cursor: hand;">
+					>> DISPLAY ICS DETAILS >>
+					</a>
+				
+			  <br><br>
+			 </td>                         
+        </tr>				
+    
+		
+		
+		
+        <tr>
+            <td align="right"><strong>Member Company</strong></td>
+            <td>Bluegiga Technologies Oy</td>
+        </tr>
+		
+        <tr class="alt">
+            <td align="right"><strong>Declaration ID</strong></td>
+            <td>B017400</td>
+        </tr>        
+		
+		<tr> 
+			<td align="right" nowrap><strong>QD ID</strong></td>
+			<td>  
+				26619 
+			  		&nbsp;&nbsp;|&nbsp;&nbsp;
+					
+					<a href="xml_exportPICS.cfm?3B1B010D270F152B080A5900057D5857">Export ICS</a>
+				
+			</td>
+		</tr>
+
+        			
+			<tr class="alt"> 
+	            <td align="right" nowrap><strong>PRD 1.0 ID (QP ID)</strong></td>
+	            <td></td>
+	        </tr>
+			
+			<tr> 
+	            <td align="right"><strong>Wi-Fi&reg; Certification ID</strong></td>
+				<td>
+					<a href="http://certifications.wi-fi.org/pdf_certificate.php?cid=" target="_blank">
+						</a>
+				</td>
+			</tr>	
+			
+			<tr class="alt"> 
+	            <td align="right"><strong>Subsetted Projects</strong></td>
+				<td>				
+					<table width="90%" border="1" cellpadding="2" class="nestedTable">
+						<tr class="row0">
+						    <th align="center">Date Created</th>
+						    <th align="center">Type</th>
+						    <th align="center">ICS</th>
+                        </tr>                   
+		                
+                            <tr class="row1">                    		        
+								<td>Aug 10, 2010</td>
+								<td>Main</td>
+								<td style="text-align: center;">
+						  			
+									
+									<a href="javascript:openWindow('showCorePICS.cfm?3A000A5A005C5043555E5414403B0C0D0E2405022413010E57503F202A5A705A574558','declaration2','scrollbars=yes,menubar=yes,resizable=yes,width=700,height=400')" style="cursor: hand;">
+										ICS<br>
+									</a>
+								</td>
+							</tr>
+						
+					</table>
+				</td>
+			</tr>
+			
+	        <tr> 
+	            <td align="right"><strong>Design Name</strong></td>
+	            <td>WT12-A</td>
+	        </tr>   
+					
+	        <tr class="alt"> 
+	            <td align="right" ><strong>Design Model Number</strong>
+	            </td>
+	            <td >WT12-A
+	            </td>
+	        </tr>
+	        
+			<tr> 
+	            <td align="right" ><strong>Hardware Version Number</strong> 
+	            </td>
+	            <td>1.2
+	            </td>
+	        </tr>
+	        
+			<tr class="alt"> 
+	            <td align="right" ><strong>Software Version Number</strong> 
+	            </td>
+	            <td >3.0
+	            </td>
+	        </tr>
+			
+	        <tr> 
+				<td align="right" nowrap><strong>Qualification Assessment Date</strong></td>
+				<td> 
+					November/02/2010 
+	            </td>
+	        </tr>
+	        
+			<tr class="alt"> 
+		       <td align="right" ><strong>Listing Date</strong> 
+			   </td>
+			   <td>  
+			     November/02/2010 
+	           </td>
+	        </tr>    
+	        
+			<tr> 
+		      <td align="right" ><strong>Design Description</strong></td>
+	          <td >Class 2 Bluetooth 2.1+EDR module <P></td>
+	        </tr>
+	        
+			<tr class="alt"> 
+			   <td align="right" ><strong>Product Type</strong></td>
+			   <td>
+			      Controller Subsystem  &nbsp;  
+                  
+	            </td>
+	        </tr>
+        
+
+		<tr>
+			<td align="right"><strong>Specification Name</strong></td>
+			<td>2.1+EDR</td>
+		</tr>
+
+        <tr class="alt"> 
+            <td align="right"><strong>Product List</strong></td>
+            <td align="right"></td>
+		</tr>
+        <tr class="alt"> 
+            <td colspan="2">
+                
+			</td>
+        </tr>
+
+        	            
+			<tr> 
+	            <td align="right" nowrap title="Click here to download a template that you can use for the Reference Integration Notes.">
+					<a href="../Download/RIN_Datasheet_Template.doc" title="Click here to download a template that you can use for the Reference Integration Notes." target="_blank">
+					Technical Data Sheet (RIN)</a>
+	            </td>
+			    <td >  		  
+					
+					    (not available)
+					
+				</td>
+	        </tr>
+			
+			
+			<tr class="alt">  
+		        <td align="right" ><strong>Listed By</strong></td>
+		        <td ><a href="mailto:pasi.rahikkala@bluegiga.com">Pasi Rahikkala</a></td>
+	        </tr>
+			
+			
+		        <tr> 
+		            <td align="right" ><strong>BQE</strong></td>
+		            <td><a href="mailto:steve.flooks@eurexuk.com">Steve Flooks</a></td>
+		        </tr>
+					
+		
+		
+		
+		<tr class="sigRow">
+			<td align="center" nowrap colspan="2">
+				<strong>Referenced QDID Profile Information</strong>
+			</td>
+		</tr>
+		
+		
+			
+			<tr class="sigRow">
+				<td align="left" valign="bottom" colspan="2">
+					
+						<img src="images/arrow-down.png" id="arrowDown_26619" style="float: left;" class="hide" onclick="toggleVis(26619);">
+						<img src="images/arrow-right.png" id="arrowRight_26619" style="float: left;" onclick="toggleVis(26619);">
+						<span style="float: left; cursor: default;" onclick="toggleVis(26619);"><strong>&nbsp;QDID: 26619</strong></span>
+					
+				</td>
+			</tr>
+			<tr class="sigRow ProfileBlock-26619 hide">
+				<td align="center"><strong>Profile / Protocol</strong></td>
+				<td align="center"><strong>Role / Version (If Any)</strong></td>                        
+			</tr>	
+			
+			
+				
+	                <tr class="row1 ProfileBlock-26619 hide">  
+						<td style="text-align: left;">
+							Baseband  
+						</td>
+						<td style="text-align: left;">
+					        
+					            &nbsp;						
+							
+						</td>
+					</tr>	
+				
+				
+	                <tr class="row0 ProfileBlock-26619 hide">  
+						<td style="text-align: left;">
+							Radio  
+						</td>
+						<td style="text-align: left;">
+					        
+					            &nbsp;						
+							
+						</td>
+					</tr>	
+				
+				
+	                <tr class="row1 ProfileBlock-26619 hide">  
+						<td style="text-align: left;">
+							Link Manager  
+						</td>
+						<td style="text-align: left;">
+					        
+					            &nbsp;						
+							
+						</td>
+					</tr>	
+				
+				
+	                <tr class="row0 ProfileBlock-26619 hide">  
+						<td style="text-align: left;">
+							Host Controller Interface  
+						</td>
+						<td style="text-align: left;">
+					        
+					            &nbsp;						
+							
+						</td>
+					</tr>	
+				
+			
+		
+			
+	    <tr> 
+            <td colspan="2">&nbsp;</td>
+		</tr>
+		
+			
+	
+    </table> 
+	
+	<br>
+						  
+    	      
+	
+</div>
+
+			</div>
+		</td>
+		<td><div style="width:13px">&nbsp;</div></td>
+	</tr>
+</table>
+<!-- #include virtual="/library/includes/footer.inc" --> 
+<!-- BEGIN: footer.inc -->
+<div id="footer">
+	<table width="978" cellspacing="0" cellpadding="0" border="0" summary="Holds bottom bar">
+		<tbody>
+			<tr>
+				<td class="whtBackground"><img width="5" height="13" alt="" src="/library/images/spacer.gif"/></td>
+				<td class="whtBackground"><img width="200" height="13" alt="" src="/library/images/spacer.gif"/></td>
+				<td class="ltgryBackground"><img width="300" height="13" alt="" src="/library/images/spacer.gif"/></td>
+				<td class="whtBackground"><img width="473" height="13" alt="" src="/library/images/spacer.gif"/></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table width="978" border="0" cellspacing="0" cellpadding="1">
+		<tr>
+			<td align="left" valign="bottom">
+				<img src="/library/images/spacer.gif" width="5">
+			</td>
+			<td class="companyLogoBackground" colspan="2" align="middle" valign="top">
+				<div style="text-align: center;">
+					<TABLE style="margin: auto;" cellSpacing="0" cellPadding="0" width="850" summary="brands" border="0">
+						<TBODY>
+						<TR>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.ericsson.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_ericsson.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.intel.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_intel.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.lenovo.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_ibm.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.microsoft.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_microsoft.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.motorola.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_motorola.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.nokia.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_nokia.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="javascript:void(window.open('http://www.toshiba.com','','width=770,height=600,scrollbars=1,resizable=1,menubar=1'));"><IMG alt="" src="/library/images/brand_toshiba.gif" border="0" /></A></TD>
+							<TD vAlign="top" align="middle"><A href="/apps/directory/"><IMG alt="" src="/library/images/brand_allSig.gif" border="0" /></A></TD>
+						</TR>
+					</TBODY>
+				</TABLE>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" valign="bottom"><img src="/library/images/spacer.gif" width="5" height="17"></td>
+			<td class="gryHeaderFooter" align="left" width="50%" nowrap="">&copy; 
+			<script type="text/javascript">
+        var currentTime = new Date();
+        var year = currentTime.getFullYear();
+        document.write(year);
+      </script>
+			 Bluetooth SIG all rights reserved</td>
+			<td align="right" valign="bottom" width="50%" nowrap="" class="gryHeaderFooter">
+				<a href="javascript:printpreview()"><img align="middle" src="/library/images/icons/print.gif"/></a>&nbsp;<a href="javascript:printpreview()">print</a> |
+				<a href="/library_cf/includes/sitemap.cfm">site map</a> | 
+				<a href="/about/legal.htm">legal</a> |
+				<a href="/About/privacy.htm">privacy policy</a>
+			</td>
+		</tr>
+	</table>
+</div>
+<!-- END footer.inc-->
+
+</body> 
+</html>
+
